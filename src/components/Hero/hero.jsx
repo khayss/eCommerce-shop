@@ -2,8 +2,8 @@ import React from 'react';
 import './hero.css';
 import hand_icon from '../assets/hand_icon.png'
 import arrow_icon from '../assets/arrow.png'
-import hero_image from '../assets/hero_image.png'
-const hero = () => {
+import hero_image from '../assets/vr.webp'
+const Hero = () => {
   return (
     <div className='hero'>
       <div className="hero-left">
@@ -13,11 +13,11 @@ const hero = () => {
             <p>new</p>
             <img src={hand_icon} alt="" />
           </div>
-          <p>collections</p>
+          <p>products</p>
           <p>for everyone</p>
         </div>
         <div className="hero-latest-btn">
-          <div>Latest Collection</div>
+          <div>Latest Arrival</div>
           <img src={arrow_icon} alt="" />
         </div>
       </div>
@@ -28,4 +28,4 @@ const hero = () => {
   )
 }
 
-export default hero
+export default Hero
