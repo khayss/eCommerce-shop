@@ -13,8 +13,9 @@
 }
 
 .footer-logo p{
+  font-family: "Signika", sans-serif;
   font-size: 46px;
-  font-weight: 600;
+  font-weight: 700;
   color: #383838;
 }
 

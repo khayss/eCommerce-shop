@@ -16,7 +16,9 @@
 .nav-logo p{
   color: #171717;
   font-size: 38px;
-  font-weight: 600;
+  font-weight: 700;
+  font-family: "Signika", sans-serif;
+  font-optical-sizing: auto;
 }
 
 .nav-menu{
@@ -66,8 +68,9 @@
 }
 
 .nav-login-cart button:hover{
-  background: rgb(214, 64, 114);
+  background: crimson;
   color: antiquewhite;
+  border: none;
 }
 
 .nav-login-cart button:active{

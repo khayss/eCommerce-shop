@@ -1,0 +1,8 @@
+.main-products{
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-wrap: wrap;
+  background: grey;
+  gap: .5rem;
+}

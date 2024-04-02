@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react'
-
+import React from 'react'
 import './Item.css'
+
 const Item = (props) => {
   return (
     <div className='item'>
@@ -18,30 +18,4 @@ const Item = (props) => {
   )
 }
 
-// function ProductItems() {
-//   const [products, setProducts] = useState(null);
-
-//   useEffect(() => {
-//     const fetchProducts = async () => {
-//       const response = await fetch ("https://dummyjson.com/products/");
-//       const data = await response.json();
-//       if (response.ok) {
-//         setProducts(data?.products)
-//       }
-//     };
-//     fetchProducts();
-//   }, [])
-
-//   return(
-//     <div>
-//       {
-//         products.map(item => (
-//           <div key={item.id }></div>
-//         ))
-//       }
-//     </div>
-//   )
-// }
-  
 export default Item
-// export default ProductItems
