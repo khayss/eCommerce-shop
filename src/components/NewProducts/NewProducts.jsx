@@ -1,16 +1,21 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import './NewProducts.css'
-import new_products from '../assets/new_collections'
+// import new_products from '../assets/new_collections'
+import {ShopContext} from '../../context/ShopContext'
+
+
 import Item from '../Item/Item'
 
 const NewProducts = () => {
+  const products = useContext(ShopContext);
+  console.log(products)
   return (
     <div className='newproducts'>
       <h1>NEW PRODUCTS</h1>
       <hr />
       <div className="products">
-        {new_products.map((item, i) => {
-          return <Item key={i} id={item.id} name={item.name} image={item.image} new_price={item.new_price} old_price={item.old_price}/>
+        {products?.map((item, i) => {
+          return <Item key={i} id={item.id} title={item.title} thumbnail={item.thumbnail} brand={item.brand} price={item.price} discountPercentage={item.discountPercentage}/>
         })}
       </div>
     </div>

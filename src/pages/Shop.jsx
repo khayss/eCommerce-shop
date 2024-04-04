@@ -10,8 +10,8 @@ const Shop = () => {
   return (
     <div>
       <Hero/>
-      <Featured/>
-      <Offers/>
+      {/* <Featured/>
+      <Offers/> */}
       <NewProducts/>
       <NewsLetter/>
     </div>

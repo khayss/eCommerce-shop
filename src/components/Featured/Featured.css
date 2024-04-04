@@ -4,6 +4,7 @@
   align-items: center;
   gap: 10px;
   height: 90vh;
+  /* padding-bottom: 500px; */
 }
 
 .featured h1{
@@ -22,5 +23,6 @@
 .featured-item{
   margin-top: 50px;
   display: flex;
+  
   gap: 30px;
 }
