@@ -3,10 +3,12 @@ import "./ProductDisplay.css";
 import star_icon from "../assets/star_icon.png";
 import star_dull_icon from "../assets/star_dull_icon.png";
 import { CartContext } from "../../context/CartContext";
+import { ShopContext } from "../../context/ShopContext";
 
 const ProductDisplay = (props) => {
   const { setCart } = useContext(CartContext);
   const { product } = props;
+  // const {addToCart} = useContext(ShopContext)
   return (
     <div className="productdisplay">
       <div className="productdisplay-left">
@@ -62,13 +64,14 @@ const ProductDisplay = (props) => {
           onClick={() => {
             setCart((prev) => {
               const index = prev.findIndex((item) => item.id === product?.id);
-              if (index < 0) return [...prev, product];
+              if (index < 0) return [...prev, { ...product, quantity: 1 }];
               return prev;
             });
           }}
         >
           ADD TO CART
         </button>
+        {/* <button onClick={()=>{addToCart(product.id)}}>ADD TO CART</button> */}
         <p className="productdisplay-right-category">
           <span>Category: </span>
           {product?.category}

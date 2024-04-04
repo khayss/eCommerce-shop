@@ -1,6 +1,5 @@
 import React, {useContext} from 'react'
 import './Featured.css'
-// import data_product from '../assets/data'
 import { ShopContext } from '../../context/ShopContext'
 import Item from '../Item/Item'
 
