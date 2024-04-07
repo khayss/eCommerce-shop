@@ -1,12 +1,12 @@
-import React, { useContext, useState } from "react";
+import { useContext } from "react";
 import "./CartItems.css";
-import { ShopContext } from "../../context/ShopContext";
+// import { ShopContext } from "../../context/ShopContext";
 import { CartContext } from "../../context/CartContext";
 import remove_icon from "../assets/cart_cross_icon.png";
 
 const CartItems = () => {
-  const products = useContext(ShopContext);
-  const [count, setCount] = useState(0);
+  // const products = useContext(ShopContext);
+  // const [count, setCount] = useState(0);
   const { cart, setCart } = useContext(CartContext);
 
   // const addBtn = () =>{
@@ -22,7 +22,10 @@ const CartItems = () => {
       prev.map(
         (item) =>
           (item.id = id
-            ? { ...item, quantity: item.quantity + e.target.value }
+            ? {
+                ...item,
+                quantity: e.target.value === "" ? "" : +e.target.value,
+              }
             : item)
       )
     );
@@ -39,74 +42,73 @@ const CartItems = () => {
         <p>Remove</p>
       </div>
       <hr />
-      {cart?.map((e) => {
+      {cart?.map((cartItem) => {
         return (
-          <div key={e.id}>
+          <div key={cartItem.id}>
             <div className="cartitems-format cartItems-format-main">
-              <img src={e.thumbnail} alt="" className="carticon-product-icon" />
-              <p>{e.title}</p>
-              <p>${e.price}</p>
-              <div className="cartitems-quantity-group">
-              <button className="cartitems-quantity-button decrementbtn"
-                onClick={() =>
-                  setCart((prev) =>
-                    prev.map((item) => {
-                      if (item.id === e.id) {
-                        return { ...item, quantity: item.quantity < 2 ? 1 : item.quantity - 1 };
-                      } else {
-                        return { ...item };
-                      }
-                    })
-                  )
-                }
-              >
-                -
-              </button>
-              <input
-                type="number"
-                className="cartitems-quantity"
-                value={e.quantity}
-                onChange={(e) => {
-                  setCart((prev) =>
-                    prev.map((item) => {
-                      // console.log(e.target.value)
-                      if (item.id == e.id) {
-                        return {
-                          ...item,
-                          quantity: item.quantity + e.target.value,
-                        };
-                      }
-                      return { ...item };
-                    })
-                  );
-                }}
+              <img
+                src={cartItem.thumbnail}
+                alt=""
+                className="carticon-product-icon"
               />
-              <button className="
+              <p>{cartItem.title}</p>
+              <p>${cartItem.price}</p>
+              <div className="cartitems-quantity-group">
+                <button
+                  className="cartitems-quantity-button decrementbtn"
+                  onClick={() =>
+                    setCart((prev) =>
+                      prev.map((item) => {
+                        if (item.id === cartItem.id) {
+                          return {
+                            ...item,
+                            quantity: item.quantity < 2 ? 1 : item.quantity - 1,
+                          };
+                        } else {
+                          return { ...item };
+                        }
+                      })
+                    )
+                  }
+                >
+                  -
+                </button>
+                <input
+                  type="number"
+                  className="cartitems-quantity"
+                  value={cartItem.quantity}
+                  onChange={(e) => {
+                    handleChange(e, cartItem.id);
+                  }}
+                />
+                <button
+                  className="
               cartitems-quantity-button incrementbtn"
-                onClick={() =>
-                  setCart((prev) =>
-                    prev.map((item) => {
-                      if (item.id === e.id) {
-                        return { ...item, quantity: item.quantity + 1 };
-                      } else {
-                        return { ...item };
-                      }
-                    })
-                  )
-                }
-              >
-                +
-              </button>
+                  onClick={() =>
+                    setCart((prev) =>
+                      prev.map((item) => {
+                        if (item.id === cartItem.id) {
+                          return { ...item, quantity: item.quantity + 1 };
+                        } else {
+                          return { ...item };
+                        }
+                      })
+                    )
+                  }
+                >
+                  +
+                </button>
               </div>
-              
 
               {/* <button className="cartitems-quantity" onClick={e.quantity+1}>{e.quantity}</button> */}
 
-              <p>${e.price * e.quantity}</p>
+              <p>${cartItem.price * cartItem.quantity}</p>
               <img
                 src={remove_icon}
                 onClick={() => {
-                  setCart((prev) => prev.filter((item) => item.id !== e.id));
+                  setCart((prev) =>
+                    prev.filter((item) => item.id !== cartItem.id)
+                  );
                 }}
                 alt=""
                 className="cartitems-remove-icon"

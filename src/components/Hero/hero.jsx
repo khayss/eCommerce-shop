@@ -1,11 +1,10 @@
-import React from 'react';
-import './hero.css';
-import hand_icon from '../assets/hand_icon.png'
-import arrow_icon from '../assets/arrow.png'
-import hero_image from '../assets/vr.webp'
+import "./hero.css";
+import hand_icon from "../assets/hand_icon.png";
+import arrow_icon from "../assets/arrow.png";
+import hero_image from "../assets/vr.webp";
 const Hero = () => {
   return (
-    <div className='hero'>
+    <div className="hero">
       <div className="hero-left">
         <h2>EXPLORE YOUR FANTASY</h2>
         <div>
@@ -25,7 +24,7 @@ const Hero = () => {
         <img src={hero_image} alt="" />
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Hero
+export default Hero;
