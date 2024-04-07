@@ -1,13 +1,33 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import "./CartItems.css";
 import { ShopContext } from "../../context/ShopContext";
 import { CartContext } from "../../context/CartContext";
 import remove_icon from "../assets/cart_cross_icon.png";
+
 const CartItems = () => {
   const products = useContext(ShopContext);
-
-  // const {products, cartItems, removeFromCart} = useContext(ShopContext)
+  const [count, setCount] = useState(0);
   const { cart, setCart } = useContext(CartContext);
+
+  // const addBtn = () =>{
+  //   const add = Number(count) + 1
+  //   setCount(add)
+  // };
+  // const minusBtn = () =>{
+  //   const minus = Number(count) - 1
+  //   setCount(minus)
+  // };
+  const handleChange = (e, id) => {
+    setCart((prev) =>
+      prev.map(
+        (item) =>
+          (item.id = id
+            ? { ...item, quantity: item.quantity + e.target.value }
+            : item)
+      )
+    );
+  };
+
   return (
     <div className="cartitems">
       <div className="cartItems-format-main">
@@ -26,6 +46,22 @@ const CartItems = () => {
               <img src={e.thumbnail} alt="" className="carticon-product-icon" />
               <p>{e.title}</p>
               <p>${e.price}</p>
+              <div className="cartitems-quantity-group">
+              <button className="cartitems-quantity-button decrementbtn"
+                onClick={() =>
+                  setCart((prev) =>
+                    prev.map((item) => {
+                      if (item.id === e.id) {
+                        return { ...item, quantity: item.quantity < 2 ? 1 : item.quantity - 1 };
+                      } else {
+                        return { ...item };
+                      }
+                    })
+                  )
+                }
+              >
+                -
+              </button>
               <input
                 type="number"
                 className="cartitems-quantity"
@@ -33,13 +69,39 @@ const CartItems = () => {
                 onChange={(e) => {
                   setCart((prev) =>
                     prev.map((item) => {
-                      if (item.id === e.id)
-                        return { ...item, quantity: e.target.value+1 };
-                      return item;
+                      // console.log(e.target.value)
+                      if (item.id == e.id) {
+                        return {
+                          ...item,
+                          quantity: item.quantity + e.target.value,
+                        };
+                      }
+                      return { ...item };
                     })
                   );
                 }}
               />
+              <button className="
+              cartitems-quantity-button incrementbtn"
+                onClick={() =>
+                  setCart((prev) =>
+                    prev.map((item) => {
+                      if (item.id === e.id) {
+                        return { ...item, quantity: item.quantity + 1 };
+                      } else {
+                        return { ...item };
+                      }
+                    })
+                  )
+                }
+              >
+                +
+              </button>
+              </div>
+              
+
+              {/* <button className="cartitems-quantity" onClick={e.quantity+1}>{e.quantity}</button> */}
+
               <p>${e.price * e.quantity}</p>
               <img
                 src={remove_icon}
@@ -60,14 +122,17 @@ const CartItems = () => {
           <div>
             <div className="cartitems-total-item">
               <p>Subtotal</p>
-              <p>${(() => {
+              <p>
+                $
+                {(() => {
                   const totalAmount = cart.map(
                     (item) => item.price * item.quantity
                   );
                   return totalAmount.reduce((accumulator, currentvalue) => {
                     return accumulator + currentvalue;
                   }, 0);
-                })()}</p>
+                })()}
+              </p>
             </div>
             <hr />
             <div className="cartitems-total-item">

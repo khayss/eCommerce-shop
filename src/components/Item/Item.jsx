@@ -33,6 +33,7 @@ const Item = (props) => {
      <Link to={`/product/${props.id}`}><img onClick={window.scrollTo(0,0)} src={props.thumbnail} alt="" /> </Link> 
       <p>Product Name: {props.title}</p>
       <p>Brand: {props.brand}</p>
+      {/* <p>Category: {props.category}</p> */}
       <div className="item-prices">
         <div className="item-price-new">
           Price: ${props.price}

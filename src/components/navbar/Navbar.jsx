@@ -55,6 +55,26 @@ const Navbar = () => {
           </Link>
           {menu === "fragrances" ? <hr /> : <></>}
         </li>
+        <li
+          onClick={() => {
+            setMenu("skincare");
+          }}
+        >
+          <Link style={{ textDecoration: "none" }} to="/skincare">
+            Skincare
+          </Link>
+          {menu === "skincare" ? <hr /> : <></>}
+        </li>
+        <li
+          onClick={() => {
+            setMenu("groceries");
+          }}
+        >
+          <Link style={{ textDecoration: "none" }} to="/groceries">
+            Groceries
+          </Link>
+          {menu === "groceries" ? <hr /> : <></>}
+        </li>
       </ul>
       <div className="nav-login-cart">
         <Link to="/login">

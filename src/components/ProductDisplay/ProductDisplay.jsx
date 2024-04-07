@@ -66,6 +66,7 @@ const ProductDisplay = (props) => {
               const index = prev.findIndex((item) => item.id === product?.id);
               if (index < 0) return [...prev, { ...product, quantity: 1 }];
               return prev;
+            
             });
           }}
         >

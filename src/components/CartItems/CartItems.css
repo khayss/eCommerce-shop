@@ -17,7 +17,8 @@
   grid-template-columns: 0.5fr 2fr 1fr 1fr 1fr 1fr;
   align-items: center;
   padding: 20px 0px;
-  gap: 75px;
+  gap: 70px;
+  /* gap: 40px; */
   font-size: 18px;
   font-family: 600;
   color: #454545;
@@ -30,10 +31,39 @@
 
 .cartitems-quantity{
   border: 2px solid #ebebeb;
-  width: 64px;
-  height: 50px;
-  background: white;
+  width: 30px;
+  height: 40px;
+  background: rgb(227, 223, 223);
+  font-size: 16px;
+  text-align: right;
 }
+
+.cartitems-quantity-group{
+  display: flex;
+  justify-content: flex-start;
+  
+}
+
+.cartitems-quantity-button{
+  padding: 0px 10px;
+  border: none;
+  outline: none;
+  background: rgb(179, 6, 179);
+  color: white;
+  font-weight: 600;
+  font-size: 15px;
+
+}
+
+.decrementbtn{
+  border-top-left-radius: 50%;
+  border-bottom-left-radius: 50%;
+}
+.incrementbtn{
+  border-top-right-radius: 50%;
+  border-bottom-right-radius: 50%;
+}
+
 .cartitems-remove-icon{
   cursor: pointer;
   width: 15px;
@@ -107,7 +137,7 @@
 
 .cartitems-promobox button{
   width: 170px;
-  height: 55px;
+  height: 57px;
   outline: none;
   border-radius: 4px;
   border: none;
